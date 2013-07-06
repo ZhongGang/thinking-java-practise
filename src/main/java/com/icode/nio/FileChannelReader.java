@@ -23,5 +23,11 @@ public class FileChannelReader {
 
         FileOutputStream out = new FileOutputStream("G:\\TestOut.txt");
         FileChannel outChannel = out.getChannel();
+
+        while (channel.read(buffer) != -1) {
+            buffer.flip();
+            outChannel.write(buffer);
+            buffer.clear();
+        }
     }
 }
