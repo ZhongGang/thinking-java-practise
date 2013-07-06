@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+group = 'com.dream'
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.8.5'
+    testCompile 'org.springframework:spring-test:3.2.1.RELEASE'
+}
