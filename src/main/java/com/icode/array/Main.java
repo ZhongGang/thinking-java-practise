@@ -10,5 +10,14 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayFill.print();
+
+
+        int[] arrays = new int[5];
+        arrays[0] = 1;
+        arrays[1] = 2;
+        arrays[2] = 3;
+        arrays[3] = 4;
+        arrays[4] = 5;
+        arrays[5] = 6;
     }
 }
