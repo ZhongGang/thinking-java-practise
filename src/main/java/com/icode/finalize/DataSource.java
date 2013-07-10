@@ -18,7 +18,7 @@ public class DataSource {
     }
 
     public static void main(String[] args) {
-        new DataSource();
+        DataSource dataSource = new DataSource();
         new DataSource();
         new DataSource();
 

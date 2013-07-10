@@ -29,5 +29,10 @@ public class Main {
         for (Integer number : numbers) {
             System.out.println(number);
         }
+
+
+        int capacity = 10;
+        capacity <<= 1;
+        System.out.println(capacity);
     }
 }
