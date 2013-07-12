@@ -12,4 +12,12 @@ public class WritableImpl implements Writable {
     public void write() {
         throw new UnsupportedOperationException("Not yet implemented!");
     }
+
+    public class ReadableImpl implements Readable {
+
+        @Override
+        public void read() {
+            throw new UnsupportedOperationException("Not yet implemented!");
+        }
+    }
 }
