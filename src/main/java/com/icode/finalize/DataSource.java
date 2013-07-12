@@ -7,10 +7,10 @@ package com.icode.finalize;
  * Time: 下午6:49
  */
 public class DataSource {
-    private String url;
-    private Class<?> driverClassName;
-    private String username;
-    private String password;
+    protected String url;
+    protected Class<?> driverClassName;
+    protected String username;
+    protected String password;
 
 
     public void finalize() {

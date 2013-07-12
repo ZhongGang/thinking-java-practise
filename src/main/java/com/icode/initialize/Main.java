@@ -1,5 +1,7 @@
 package com.icode.initialize;
 
+import com.icode.finalize.DataSource;
+
 /**
  * Created with IntelliJ IDEA.
  * User: ZhongGang
@@ -11,5 +13,8 @@ public class Main {
     public static void main(String[] args) {
         Initialize initialize = new Initialize();
         initialize.print();
+
+
+        new DataSource();
     }
 }
