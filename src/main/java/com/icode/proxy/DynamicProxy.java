@@ -22,6 +22,11 @@ public class DynamicProxy {
             }
         });
         record.record();
+
+
+        RecordableInvocationHandler invocationHandler = new RecordableInvocationHandler(recordable);
+        record = (Recordable) Proxy.newProxyInstance(recordable.getClass().getClassLoader(), new Class[]{Recordable.class}, invocationHandler);
+        record.record();
     }
 
 }
