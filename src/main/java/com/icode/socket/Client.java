@@ -30,8 +30,10 @@ public class Client {
         while (true) {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             String message = bufferedReader.readLine();
-            Client client = new Client();
-            client.sendMessage(message);
+            for (int i = 0; i < 5; i++) {
+                Client client = new Client();
+                client.sendMessage(message);
+            }
         }
     }
 }
