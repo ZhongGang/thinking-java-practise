@@ -19,7 +19,7 @@ public class Server {
             byte[] message = new byte[1024];
             DatagramPacket packet = new DatagramPacket(message, 1024);
             serverSocket.receive(packet);
-            System.out.println(new String(message));
+            System.out.println(packet.getAddress().getHostName() + ": " + packet.getPort() + " said " + new String(message));
         }
     }
 

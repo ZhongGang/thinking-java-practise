@@ -1,6 +1,7 @@
 package com.icode.socket;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.Socket;
 
 /**
@@ -13,7 +14,7 @@ public class Client {
     private Socket socket;
 
     public Client() throws IOException {
-        this.socket = new Socket("127.0.0.1", 9999);
+        this.socket = new Socket(InetAddress.getLocalHost(), 9999);
     }
 
     public void sendMessage(String message) throws IOException {
@@ -30,7 +31,7 @@ public class Client {
         while (true) {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             String message = bufferedReader.readLine();
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 500; i++) {
                 Client client = new Client();
                 client.sendMessage(message);
             }

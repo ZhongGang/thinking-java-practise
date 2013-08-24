@@ -3,10 +3,7 @@ package com.icode.datagram;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
+import java.net.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,14 +15,16 @@ public class Client {
     private DatagramSocket socket;
 
     public Client() throws IOException {
-        SocketAddress socketAddress = new InetSocketAddress("127.0.0.1", 9999);
+        SocketAddress socketAddress = new InetSocketAddress(InetAddress.getLocalHost(), 9998);
         this.socket = new DatagramSocket(socketAddress);
     }
 
     public void sendMessage(String message) throws IOException {
-        SocketAddress socketAddress = new InetSocketAddress("127.0.0.1", 9999);
-        DatagramPacket datagramPacket = new DatagramPacket(message.getBytes(), 20, socketAddress);
+        SocketAddress socketAddress = new InetSocketAddress(InetAddress.getLocalHost(), 9999);
+        byte[] content = message.getBytes();
+        DatagramPacket datagramPacket = new DatagramPacket(content, content.length, socketAddress);
         socket.send(datagramPacket);
+        socket.close();
     }
 
     public static void main(String[] args) throws IOException {
