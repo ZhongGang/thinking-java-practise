@@ -1,7 +1,6 @@
 package com.icode.socket;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -18,14 +17,38 @@ public class SyncServer {
     }
 
     public void run() throws IOException, InterruptedException {
-        for (int i = 0; i < 5; i++) {
-            System.out.println(socket.toString() + i);
-            Thread.sleep(1000);
-        }
+//        for (int i = 0; i < 5; i++) {
+//            System.out.println(socket.toString() + i);
+//            Thread.sleep(1000);
+//        }
         InputStream inputStream = null;
         inputStream = socket.getInputStream();
         byte[] message = new byte[1024];
         inputStream.read(message);
         System.out.println(new String(message));
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+                String content = null;
+                try {
+                    content = bufferedReader.readLine();
+                } catch (IOException e) {
+                    throw new UnsupportedOperationException("Not yet implemented!");
+                }
+                OutputStream outputStream = null;
+                try {
+                    outputStream = socket.getOutputStream();
+                } catch (IOException e) {
+                    throw new UnsupportedOperationException("Not yet implemented!");
+                }
+                try {
+                    outputStream.write(content.getBytes());
+                } catch (IOException e) {
+                    throw new UnsupportedOperationException("Not yet implemented!");
+                }
+            }
+        }).start();
     }
 }

@@ -24,16 +24,30 @@ public class Client {
 
     public void readMessage() throws IOException {
         InputStream inputStream = socket.getInputStream();
-        throw new UnsupportedOperationException("Not yet implemented!");
+        byte[] message = new byte[1024];
+        inputStream.read(message);
+        System.out.println(new String(message));
     }
 
     public static void main(String[] args) throws IOException {
         while (true) {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             String message = bufferedReader.readLine();
-            for (int i = 0; i < 500; i++) {
-                Client client = new Client();
+            for (int i = 0; i < 1; i++) {
+                final Client client = new Client();
                 client.sendMessage(message);
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            client.readMessage();
+                        } catch (IOException e) {
+                            throw new UnsupportedOperationException("Not yet implemented!");
+                        }
+                    }
+                }).start();
+
             }
         }
     }

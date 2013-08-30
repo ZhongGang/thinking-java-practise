@@ -1,6 +1,8 @@
 package com.icode.nio;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
@@ -47,8 +49,10 @@ public class Server {
                     SocketChannel socketChannel = serverSocketChannel1.accept();
                     ByteBuffer buffer = ByteBuffer.allocate(1024);
                     socketChannel.read(buffer);
-                    String message = new String(buffer.array());
-                    System.out.println(message);
+                    System.out.println(new String(buffer.array()));
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+                    String message = bufferedReader.readLine();
+                    socketChannel.write(buffer.put(message.getBytes()));
                 }
             }
         }

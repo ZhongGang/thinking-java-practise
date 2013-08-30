@@ -31,6 +31,6 @@ public class Server {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Server server = new Server();
-        server.asyncStart();
+        server.syncStart();
     }
 }
